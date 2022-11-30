@@ -32,7 +32,7 @@ namespace API.Extensions
                 {{securitySchema, new [] {"Bearer"}}};
                 c.AddSecurityRequirement(securityRequirement);
             });
-            
+
             return services;
         }
         public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
