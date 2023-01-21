@@ -1,0 +1,36 @@
+<ng-container *ngIf="!orders">
+    You hahve not Created Order
+</ng-container>
+
+<ng-container *ngIf="orders">
+    <div class="container mt-5">
+        <div class="table-responsive">
+            <table class="table table-hover" style="cursor: pointer">
+                <thead>
+                    <tr>
+                        <th class="border-0" scope="col" class="bg-light">
+                            <div class="py-2 text-uppercase">Order</div>
+                        </th>
+                        <th class="border-0" scope="col" class="bg-light">
+                            <div class="py-2 text-uppercase">Date</div>
+                        </th>
+                        <th class="border-0" scope="col" class="bg-light">
+                            <div class="py-2 text-uppercase">Total</div>
+                        </th>
+                        <th class="border-0" scope="col" class="bg-light">
+                            <div class="py-2 text-uppercase">status</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orders; let i = index" routerLink="{{item.id}}">
+                        <th scope="row" class="align-middle"> <strong>#{{item.id}}</strong> </th>
+                        <td class="align-middle"> {{item.orderDate | date:'medium'}} </td>
+                        <td class="align-middle"> <strong>{{item.total | currency}}</strong> </td>
+                        <td class="align-middle"> {{item.orderStatus | titlecase}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-container>

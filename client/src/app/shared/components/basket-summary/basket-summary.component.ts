@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BasketService } from 'src/app/basket/basket.service';
+import { OrdersService } from 'src/app/orders/orders.service';
 import { IBasket, IBasketItem } from '../../models/basket';
 
 @Component({
@@ -14,11 +15,13 @@ export class BasketSummaryComponent implements OnInit {
   @Output() increment: EventEmitter<IBasketItem> = new EventEmitter<IBasketItem>();
   @Output() remove: EventEmitter<IBasketItem> = new EventEmitter<IBasketItem>();
   @Input() isBasket: boolean = true;
+  @Input() isOrder: boolean = false;
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService,
+              private orderService: OrdersService) { }
 
   ngOnInit(): void {
-    this.basket$ = this.basketService.basket$;
+    this.basket$ = this.isOrder ? this.orderService.order$ : this.basketService.basket$;
   }
 
   decrementItemQuantity(item: IBasketItem){

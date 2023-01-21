@@ -17,6 +17,8 @@ export interface IOrderToCreate {
     subtotal: number
     orderStatus: number
     paymentIntentId: string
+    shippingPrice?: number
+    total?: number
   }
 
   
@@ -25,6 +27,9 @@ export interface IOrderToCreate {
     productItemOrdered: ProductItemOrdered
     quantity: number
     price: number
+    productName?: string
+    pictureUrl?: string
+    productId?: number
   }
   
   export interface ProductItemOrdered {

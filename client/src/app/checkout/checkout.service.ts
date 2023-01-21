@@ -14,7 +14,7 @@ baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   createOrder(order: IOrderToCreate){
-    return this.http.post(this.baseUrl + "Orders", order)
+    return this.http.post(this.baseUrl + "Orders", order);
   }
 
   getDeliveryMethods(){

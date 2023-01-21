@@ -3,16 +3,16 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="border-0" scope="col" [class.bg-light]="isBasket">
+                    <th class="border-0" scope="col" [class.bg-light]="isBasket || isOrder">
                         <div class="p-2 px-3 text-uppercase">products</div>
                     </th>
-                    <th class="border-0" scope="col" [class.bg-light]="isBasket">
+                    <th class="border-0" scope="col" [class.bg-light]="isBasket || isOrder">
                         <div class="py-2 text-uppercase">Price</div>
                     </th>
-                    <th class="border-0" scope="col" [class.bg-light]="isBasket">
+                    <th class="border-0" scope="col" [class.bg-light]="isBasket || isOrder">
                         <div class="py-2 text-uppercase">Quantity</div>
                     </th>
-                    <th class="border-0" scope="col" [class.bg-light]="isBasket">
+                    <th class="border-0" scope="col" [class.bg-light]="isBasket || isOrder">
                         <div class="py-2 text-uppercase">Total</div>
                     </th>
                     <th *ngIf="isBasket" class="border-0 bg-light" scope="col">
@@ -31,7 +31,7 @@
                                         {{item.productName}}
                                     </a>
                                 </h5>
-                                <span class="text-muted font-weight-normal font-italic d-block">
+                                <span *ngIf="!isOrder" class="text-muted font-weight-normal font-italic d-block">
                                     Type: {{item.type}}
                                 </span>
                             </div>
